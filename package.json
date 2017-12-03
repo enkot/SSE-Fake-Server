@@ -1,10 +1,9 @@
 {
   "name": "sse-fake-server",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Server Sent Events fake server for testing your code with data.",
-  "bin": "dist/index.cjs.js",
+  "main": "./dist/index.cjs.js",
   "scripts": {
-    "start": "dist/index.cjs.js",
     "build": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,9 +26,5 @@
     "rollup-plugin-eslint": "^4.0.0",
     "rollup-plugin-serve": "^0.4.2",
     "rollup-watch": "^4.3.1"
-  },
-  "dependencies": {
-    "sse": "0.0.6",
-    "webpack-dev-server": "^2.9.5"
   }
 }
