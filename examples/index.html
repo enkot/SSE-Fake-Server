@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SSE Fake Server</title>
+    <style>
+        #container > div {
+            width: 5rem;
+            margin: 5px;
+            float: left;
+            text-align: center;
+            font-family: sans-serif;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        // Create SSE object
+        var es = new EventSource("http://localhost:5555/stream");
+
+        var container = document.getElementById('container');
+
+        // Listen for message events from server
+        es.addEventListener('message', function(e) {
+            var data = JSON.parse(e.data);
+
+            // Append data content to DOM
+            data.results.forEach(el => {
+                var item = document.createElement('div');
+
+                item.innerHTML = [
+                    '<img src="' + el.picture.thumbnail + '">',
+                    '<p>' + el.name.first + ' ' + el.name.last + '</p>'
+                ].join('');
+
+                container.appendChild(item);
+            });
+
+        }, false);  
+
+        // Show message when connected
+        es.addEventListener('open', function(e) {
+            console.log("Connected");
+        }, false)
+    
+        // Listen for error event
+        es.addEventListener('error', function(e) {
+            if (e.target.readyState == EventSource.CLOSED) {
+                console.log("Disconnected")
+            }
+            else if (e.target.readyState == EventSource.CONNECTING) {
+                console.log("Connecting...")
+            }
+        }, false)
+    </script>
+</body>
+</html>
