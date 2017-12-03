@@ -15,8 +15,9 @@ SSEServer((client) => {
     }, 3000);
 });
 
+// Get fake data from "randomuser.me"
 function getData(num, cb) {
-    https.get('https://randomuser.me/api/?results=' + num + '&inc=gender,name,location,picture', (resp) => {
+    https.get('https://randomuser.me/api/?results=' + num + '&inc=name,picture', (resp) => {
         let data = '';
        
         resp.on('data', (chunk) => {
