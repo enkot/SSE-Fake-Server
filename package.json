@@ -1,6 +1,6 @@
 {
   "name": "sse-fake-server",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Server Sent Events fake server for testing your code with data.",
   "main": "./dist/index.cjs.js",
   "scripts": {
@@ -12,6 +12,9 @@
     "url": "git+https://github.com/enkot/SSE-Fake-Server.git"
   },
   "author": "Taras Batenkov <taras.batenkov@gmail.com> (https://github.com/enkot)",
+  "contributors": [
+    "Kyle Goetz (https://github.com/kylegoetz)"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/enkot/SSE-Fake-Server/issues"
