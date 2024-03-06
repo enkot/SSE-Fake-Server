@@ -26,7 +26,7 @@ Run it:
 ```sh
 $ node fakeServer.js
 ```
-Now fake server listen on http://localhost:5555.
+Now fake server listen on http://localhost:5555/stream.
 ### Client
 Simple SSE usage:
 ```html
